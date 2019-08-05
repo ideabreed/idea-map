@@ -6,12 +6,10 @@ class Ideamap {
     this.zoom = options.zo;
     this.type = options.typ;
     this.apiKey = options.api;
-    // this.setApi();
-    this.infoWindowEvent = infoWindowEvent
-    this.object;
+    this.markerDetails = options.mrk;
+    this.infoWindowEvent = options.infoEv;
     this.allMarkers = [];
-    this.render();
-    this.setMarker(markerDetails);
+    this.setApi();
   }
 
   render() {
@@ -22,11 +20,23 @@ class Ideamap {
   }
 
   setApi() {
-    let head = document.getElementsByTagName('head')[0];
+    let head = document.getElementsByTagName('body')[0];
     let script = document.createElement('script');
     script.type = 'text/javascript';
+    script.async = true;
+    // script.defer = true;
+    var ideaMap = this;
+    script.onload = function () {
+      // this.render();
+      ideaMap.render();
+      ideaMap.setMarker(ideaMap.markerDetails);
+    }
     script.src = "https://maps.googleapis.com/maps/api/js?key=" + this.apiKey
-    head.appendChild(script);
+    head.insertBefore(script, head.firstChild);
+  }
+
+  reset() {
+
   }
 
   // toggleInfoWindow() {
@@ -46,7 +56,7 @@ class Ideamap {
       markers.forEach(markerDetail => {
         let newMarker = new Marker(markerDetail.icon, markerDetail.position, markerDetail.info, this.object, this.infoWindowEvent)
         this.allMarkers.push(newMarker)
-          // newMarker.object.addListener(this.infoWindowEvent, function () {
+        // newMarker.object.addListener(this.infoWindowEvent, function () {
         //   this.toggleInfoWindow;
         // })
       });

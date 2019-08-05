@@ -4,7 +4,7 @@ var position = { lat: 28.3949, lng: 84.1240 };
 var zoom = 6;
 var type = "google";
 var infoWindowMarkup = "<h4>hello</h4>"
-var infoWindowEvent = "mouseover"
+var infoWindowEvent = "mouseover";
 var markerDetails = [
   { icon: "http://maps.google.com/mapfiles/ms/icons/blue.png", position: { lat: 28.26689, lng: 83.9685 }, info: '<h4>bye</h4>' },
   { icon: "http://maps.google.com/mapfiles/ms/icons/blue.png", position: { lat: 27.4368, lng: 85.0026 }, info: infoWindowMarkup },
@@ -21,5 +21,4 @@ var mapOptions = {
   infoEv: infoWindowEvent
 }
 
-
-map = new Ideamap(mapOptions)
+map = new Ideamap(mapOptions);
