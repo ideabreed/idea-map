@@ -1,18 +1,21 @@
-class Map {
-  constructor(element, position, zoom, type, apiKey, markerDetails = []) {
-    this.element = element
-    this.position = new google.maps.LatLng(position.lat, position.long);
-    this.zoom = zoom;
-    this.type = type;
-    this.apiKey = apiKey;
-    this.setApi(markerDetails);
-    this.setMarker();
-    this.map = this.render();
+class Ideamap {
+  // constructor(element, position, zoom, type, apiKey, markerDetails = [], infoWindowEvent) {
+  constructor(options) {
+    this.element = options.ele
+    this.position = options.pos;
+    this.zoom = options.zo;
+    this.type = options.typ;
+    this.apiKey = options.api;
+    // this.setApi();
+    this.infoWindowEvent = infoWindowEvent
+    this.object;
+    this.allMarkers = [];
+    this.render();
+    this.setMarker(markerDetails);
   }
 
   render() {
-    console.log('here');
-    let map = new google.maps.Map(element, {
+    this.object = new google.maps.Map(this.element, {
       center: this.position,
       zoom: this.zoom
     })
@@ -22,16 +25,33 @@ class Map {
     let head = document.getElementsByTagName('head')[0];
     let script = document.createElement('script');
     script.type = 'text/javascript';
-    // script.src = "https://maps.googleapis.com/maps/api/js?key=" + this.apiKey
-    // head.appendChild(script);
+    script.src = "https://maps.googleapis.com/maps/api/js?key=" + this.apiKey
+    head.appendChild(script);
   }
 
+  // toggleInfoWindow() {
+  //   alert('here')
+  //   if (this.infoWindowEvent == 'click') {
+  //     this.info.toggleInfoWindow();
+  //   }
+  //   else if (this.infoWindowEvent == 'mouseover') {
+  //     this.allMarkers.forEach(function (marker) {
+  //       marker.info.hideInfoWindow();
+  //     })
+  //     this.marker.info.showInfoWindow();
+  //   }
+  // }
   setMarker(markers) {
     if (markers) {
       markers.forEach(markerDetail => {
-        Marker.new(markerDetail.icon, markerDetail.position, markerDetail.info, this.map)
+        let newMarker = new Marker(markerDetail.icon, markerDetail.position, markerDetail.info, this.object, this.infoWindowEvent)
+        this.allMarkers.push(newMarker)
+          // newMarker.object.addListener(this.infoWindowEvent, function () {
+        //   this.toggleInfoWindow;
+        // })
       });
     }
   }
+
 
 }
