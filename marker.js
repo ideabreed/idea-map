@@ -6,7 +6,12 @@ class Marker {
     this.infoWindowEvent = infoWindowEvent
     this.object;
     this.render();
-    this.info = new Infowindow(info, map, this.object);
+    this.info = new Infowindow({
+      infoWindowContent: info,
+      map: map,
+      marker: this.object,
+      infoWindowEvent: infoWindowEvent
+    });
   }
 
   render() {
@@ -17,14 +22,11 @@ class Marker {
         url: this.iconUrl
       }
     });
-    var windowEvent = this.infoWindowEvent
-    if (this.infoWindowEvent == 'mouseover') {
-      this.object.addListener('mouseout', () => {
-        this.info.hideInfoWindow();
-      })
-    }
-    this.object.addListener(this.infoWindowEvent, () => {
-      this.info.toggleInfoWindow();
+    this.object.addListener(this.infoWindowEvent.hide.event, () => {
+      this.info.hide();
+    })
+    this.object.addListener(this.infoWindowEvent.show.event, () => {
+      this.info.show();
     })
   }
 
@@ -35,14 +37,5 @@ class Marker {
   hide() {
     this.object.setVisible(false);
   }
-
-  onClick() {
-    this.info.toggleInfoWindow();
-  }
-
-  onHover() {
-    this.object.addListener('hover', () => {
-    })
-  }
-
 }
+

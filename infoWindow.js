@@ -1,28 +1,34 @@
 class Infowindow {
-  constructor(contentString, map, marker) {
-    this.marker = marker
-    this.map = map
-    this.contentString = contentString;
+  constructor(options) {
+    this.options = options;
+    var markup = document.createElement('div');
+    markup.innerHTML = options.infoWindowContent;
+    var thisWindow = this;
+    options.infoWindowEvent.events.forEach(function (ev) {
+      markup.addEventListener(ev.event, function () {
+        ev.handler(thisWindow);
+      })
+    })
     this.infoWindow = new google.maps.InfoWindow({
-      content: contentString,
+      content: markup,
       opened: false
     });
   }
-  showInfoWindow() {
-    this.infoWindow.open(this.map, this.marker);
+  show() {
+    this.infoWindow.open(this.options.map, this.options.marker);
     this.infoWindow.opened = true;
   }
-  hideInfoWindow() {
+  hide() {
     this.infoWindow.close();
     this.infoWindow.opened = false;
   }
-  toggleInfoWindow(windowEvent) {
+  toggle() {
     if (this.infoWindow.opened) {
-      this.hideInfoWindow();
+      this.hide();
       this.infoWindow.opened = false;
     }
     else {
-      this.showInfoWindow();
+      this.show();
       this.infoWindow.opened = true;
     }
   }
