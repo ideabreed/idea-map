@@ -7,13 +7,13 @@ var infoWindowMarkup = "<h4>hello</h4>"
 var infoWindowEvent = {
   show: {
     event: "mouseover",
-    before: function (o) { },
-    after: function (o) { }
+    before: function (o) { console.log(o) },
+    after: function (o) { console.log(o) }
   },
   hide: {
     event: "mouseout",
-    before: function (o) { },
-    after: function (o) { }
+    before: function (o) { console.log(o) },
+    after: function (o) { console.log(o) }
   },
   events: [
     {

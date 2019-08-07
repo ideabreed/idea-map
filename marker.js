@@ -22,11 +22,17 @@ class Marker {
         url: this.iconUrl
       }
     });
-    this.object.addListener(this.infoWindowEvent.hide.event, () => {
+    var infoObj = this.info;
+    this.object.addListener(this.infoWindowEvent.hide.event, (infoObj) => {
+      this.infoWindowEvent.hide.before(infoObj)
       this.info.hide();
+      this.infoWindowEvent.hide.after(infoObj)
+
     })
-    this.object.addListener(this.infoWindowEvent.show.event, () => {
+    this.object.addListener(this.infoWindowEvent.show.event, (infoObj) => {
+      this.infoWindowEvent.show.before(infoObj)
       this.info.show();
+      this.infoWindowEvent.show.after(infoObj)
     })
   }
 
