@@ -24,6 +24,7 @@ class Marker {
     });
     var infoObj = this.info;
     this.object.addListener(this.infoWindowEvent.hide.event, (infoObj) => {
+      console.log(infoObj)
       this.infoWindowEvent.hide.before(infoObj)
       this.info.hide();
       this.infoWindowEvent.hide.after(infoObj)
