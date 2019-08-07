@@ -39,7 +39,7 @@ class Ideamap {
 
   }
 
-  // toggleInfoWindow() {
+  // toggle() {
   //   alert('here')
   //   if (this.infoWindowEvent == 'click') {
   //     this.info.toggleInfoWindow();

@@ -11,7 +11,7 @@ var infoWindowEvent = {
     after: function (o) { }
   },
   hide: {
-    // event: "mouseout",
+    event: "mouseout",
     before: function (o) { },
     after: function (o) { }
   },
