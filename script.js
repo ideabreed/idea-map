@@ -9,11 +9,11 @@ var infoWindowMarkup = "<h4>Test Marker</h4>";
 var infoWindowEvents = {
     show: {
         event: "mouseover",
-        before: function (o) {
-            console.log(o)
+        before: function (ideaMarker) {
+            console.log(ideaMarker)
         },
-        after: function (o) {
-            console.log(o)
+        after: function (ideaMarker) {
+            console.log(ideaMarker)
         }
     },
     hide: {
