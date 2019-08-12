@@ -2,8 +2,8 @@
 
 The purpose of this library is to combine features of google map such as map, marker and corresponding info window rendering to a single API call. 
 This simplifies implementing google map into your project while not having to remember all the associated API calls provided by it.
-Just include the script tag into your project and initialize and object of Ideamap class with appropriate parameters while rendering the map.
-While instantiating the Ideamap class, there are certain parameters that you need to pass according to your requirement. Let’s go over them:
+Just include the script tag into your project and initialize and object of ideaMap class with appropriate parameters while rendering the map.
+While instantiating the ideaMap class, there are certain parameters that you need to pass according to your requirement. Let’s go over them:
 Here, we’ve passed in an object while initializing the map
 
 ```javascript
@@ -17,7 +17,7 @@ var mapOptions = {
 	infoEv: infoWindowEvent
 }
 
-map = new Ideamap (mapOptions);
+map = new ideaMap (mapOptions);
 ```
 
 Lets break each values that we’ve passed to the key of mapOptions object.
@@ -184,7 +184,22 @@ Lets break each values that we’ve passed to the key of mapOptions object.
     	}
     
     ```
-- Instantiate and object of Ideamap and provide the object created earlier as an argument
+- Instantiate and object of ideaMap and provide the object created earlier as an argument
     ```js
-      map = new Ideamap (mapOptions);
+      map = new ideaMap (mapOptions);
     ```
+    
+## Contribution Guidelines
+
+You are welcome to contribute to this library.
+
+### Installation
+
+```bash
+yarn install
+```
+
+### Run server
+```bash
+yarn s
+```
