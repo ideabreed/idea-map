@@ -42,7 +42,8 @@ var mapOptions = {
 new ideaMap(mapOptions);
 
 ```
-
+#### Output
+![simple-map.png](images/simple-map.png)
 ## Using full features
 ```js
 import ideaMap from "./lib/ideaMap.js"
